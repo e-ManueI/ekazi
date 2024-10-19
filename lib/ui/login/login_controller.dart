@@ -29,9 +29,6 @@ class LoginController extends GetxController {
   String? validatePhoneNumber(String value) {
     if (value.isEmpty) {
       return 'Phone number cannot be empty';
-    } else if (!RegExp(r'^\+255\d{9}$').hasMatch(countryCode + value)) {
-      // Ensure country code is part of the validation
-      return 'Please for currently use +255 country code for Tanzania';
     }
     return null;
   }
@@ -77,16 +74,16 @@ class LoginController extends GetxController {
           // Attempt to parse JSON
           // final data = jsonDecode(response.body);
           Get.snackbar('Success', 'Logged in successfully',
-              snackPosition: SnackPosition.TOP,
+              snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Color(0xFF66BB6A),
               colorText: Colors.white);
 
           // Navigate to OTP verification page with concatenated mobile number
-          // Get.to(() => OTPPage(mobile: phoneNumber));
+          Get.offNamed('/dashboard');
           return true;
         } catch (e) {
           Get.snackbar('Error', 'Failed to parse server response',
-              snackPosition: SnackPosition.TOP,
+              snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Color(0xFFE53935),
               colorText: Colors.black26);
           return false;
@@ -95,19 +92,19 @@ class LoginController extends GetxController {
         switch (response.statusCode) {
           case 401:
             Get.snackbar('Error', 'Incorrect phone number or password',
-                snackPosition: SnackPosition.TOP,
+                snackPosition: SnackPosition.BOTTOM,
                 backgroundColor: Color(0xFFE53935),
                 colorText: Colors.black);
             break;
           case 500:
             Get.snackbar('Server Error', 'Internal server error',
-                snackPosition: SnackPosition.TOP,
+                snackPosition: SnackPosition.BOTTOM,
                 backgroundColor: Color(0xFFE53935),
                 colorText: Colors.black);
             break;
           case 404:
             Get.snackbar('Error', 'Endpoint not found',
-                snackPosition: SnackPosition.TOP,
+                snackPosition: SnackPosition.BOTTOM,
                 backgroundColor: Color(0xFFE53935),
                 colorText: Colors.black);
             break;
@@ -116,12 +113,12 @@ class LoginController extends GetxController {
               final data = jsonDecode(response.body);
               Get.snackbar(
                   'Error', data['message'] ?? 'Invalid Phone or Password',
-                  snackPosition: SnackPosition.TOP,
+                  snackPosition: SnackPosition.BOTTOM,
                   backgroundColor: Color(0xFFE53935),
                   colorText: Colors.black);
             } catch (e) {
               Get.snackbar('Error', 'Server error: ${response.body}',
-                  snackPosition: SnackPosition.TOP,
+                  snackPosition: SnackPosition.BOTTOM,
                   backgroundColor: Color(0xFFE53935),
                   colorText: Colors.black);
             }
@@ -130,7 +127,7 @@ class LoginController extends GetxController {
       }
     } catch (e) {
       Get.snackbar('Error', 'Network error or unexpected error occurred: $e',
-          snackPosition: SnackPosition.TOP,
+          snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Color(0xFFE53935),
           colorText: Colors.black);
       return false;

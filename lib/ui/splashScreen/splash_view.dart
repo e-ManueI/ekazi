@@ -6,7 +6,8 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // Navigate to the login page after the animation is complete
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Get.offNamed('/dashboard');
+        Get.offNamed('/login');
       }
     });
   }
