@@ -1,6 +1,12 @@
 # ekazi
 
-A new Flutter project.
+A job searching quick demo app UI.
+
+## Screenshots
+
+![Splash Screen](/assets/screenshots/splash.jpeg) ![Login Screen](/assets/screenshots/login_page.jpeg) 
+![Home Main Screen](/assets/screenshots/home_one.jpeg) ![Home Screen Scroll Down](/assets/screenshots/home_two.jpeg) 
+![Home Tab Product Variation Screen](/assets/screenshots/home_three.jpeg)
 
 ## Getting Started
 
